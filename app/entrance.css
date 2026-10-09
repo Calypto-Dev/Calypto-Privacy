@@ -1,0 +1,3 @@
+.eye-entrance{position:fixed;inset:0;z-index:1000;background:#080809;overflow:hidden;isolation:isolate}
+.eye-entrance-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.eye-entrance .skip-intro{z-index:1;color:#ead2d9;border-color:#c8a0ad66;background:#15131888}

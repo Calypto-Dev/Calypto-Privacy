@@ -1,0 +1,8 @@
+node_modules
+dist
+.next
+pnpm-lock.yaml
+vendor
+drizzle
+*.css
+public

@@ -1,0 +1,219 @@
+/* Warm charcoal gives the stage depth while keeping the interface easy to read. */
+:root {
+  --bg: #151318;
+  --panel: #231f26;
+  --red: #d32435;
+  --red-light: #e8475a;
+  --text: #f1ede7;
+  --muted: #b8b0b6;
+  --line: #48404a;
+}
+
+body { color: var(--text); }
+::selection { background: #794254; color: #fff8f2; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #e0a0b3;
+  outline-offset: 4px;
+}
+input::placeholder, textarea::placeholder { color: #b8afb8; opacity: 1; }
+.ambient-grain { opacity: .018; }
+.site-header { background: #17141af2; border-color: var(--line); }
+.header-identity { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.header-eye { display: grid; place-items: center; width: 40px; height: 30px; }
+.site-header nav { color: #cec7cd; font-size: 14px; }
+.site-header nav a[aria-current] { color: #f2d6df; }
+.site-header .header-cta { border-color: #76606b; color: var(--text); font-size: 13px; }
+.site-footer { background: #1b181e; border-color: var(--line); }
+.site-footer > span, .site-footer > div { color: #bdb5bc; font-size: 12px; }
+.site-footer small { color: #aaa2ac; font-size: 11px; border-color: var(--line); line-height: 1.8; }
+.btn { border-color: #76616c; font-size: 14px; }
+.btn:hover { background: #35252e; border-color: #ce8ba0; }
+.btn.primary { background: var(--red); border-color: #d32435; color: #fff; }
+.btn.primary:hover { background: #e2293c; border-color: #e2293c; }
+.text-link { color: #d3c9d0; font-size: 14px; }
+.eyebrow { color: #d1a6b3; font-size: 11px; }
+
+/* Preserve the homepage choreography and original silk sculpture. */
+.home-cinema { --film-type: #f1ede7; --film-muted: #bfb6be; --film-red: #d32435; }
+.home-cinema .eyebrow { color: #d1a6b3; font-size: 11px; }
+.home-cinema h1, .home-cinema h2 { color: var(--text); }
+.home-cinema em { color: #dcb7c1; }
+.home-cinema > .site-header .header-cta { background: #29212c88; border-color: #76606b; }
+.cinema-vignette { background: linear-gradient(#15131822, transparent 18%, transparent 82%, #15131855); box-shadow: inset 0 0 65px #0002; }
+.cinema-topnote, .cinema-coordinate, .object-caption, .cinema-scroll a { color: #c3b8c1; font-size: 10px; }
+.cinema-description > span, .cinema-edge, .scene-progress { color: #b8a8b2; font-size: 10px; }
+.cinema-description p { color: #cbc2c8; font-size: 14px; }
+.second-scene p, .third-scene p { color: #d0c4cc; font-size: 15px; }
+.cinema-enter { color: #f1e6ed; background: #38252fcc; border-color: #9b6478; font-size: 14px; }
+.cinema-ribbon { background: #211b24; border-color: #59424f; }
+.cinema-ribbon > div > span { color: #c7b9c3; }
+.cinema-modes, .cinema-mode { border-color: #584450; }
+.cinema-mode-word { color: #eee6e9; }
+.cinema-mode-details > span { color: #dfb7c5; font-size: 12px; }
+.cinema-mode-details p, .manifesto-statements p, .access-duet p { color: #c2b9c0; font-size: 15px; }
+.cinema-manifesto { background: radial-gradient(ellipse at 70% 40%, #4a263d33, transparent 60%), #1c1820; border-color: #4c3a46; }
+.manifesto-sidenote, .manifesto-statements article > span { color: #bbaab5; font-size: 10px; }
+.manifesto-link, .manifesto-link > span { color: #d1c2cb; }
+.access-duet article { border-color: #66525e; background: #231d2766; }
+.access-duet article > span { color: #ccb7c5; }
+.cinema-faq, .faq { border-color: #584450; }
+.cinema-faq button > strong, .faq button { font-size: 15px; }
+.cinema-faq button > span { color: #c3a6b9; font-size: 11px; }
+.cinema-answer p, .faq p { color: #c2b9c0; font-size: 15px; }
+.cinema-access-note { color: #c3b2be; font-size: 12px; }
+.dossier-label { color: #bfb2bc; font-size: 11px; }
+
+/* Inner pages share the same ivory text, readable body copy, and raised surfaces. */
+.opera-editorial .editorial-breadcrumb { color: #bfb4be; font-size: 12px; }
+.opera-editorial .eyebrow { color: #d1a6b3; font-size: 11px; }
+.opera-editorial h1, .opera-editorial h2, .opera-editorial h3 { color: var(--text); }
+.opera-editorial h1 em, .opera-editorial h2 em { color: #dcb7c1; }
+.opera-editorial p, .opera-editorial .editorial-hero-copy > p,
+.opera-editorial .access-page-hero > div > p, .opera-editorial .guide-hero-copy > p {
+  color: #c4bdc3; font-size: 16px; line-height: 1.9;
+}
+.opera-editorial .editorial-hero-art > span, .guide-hero-art > span { color: #c2afb9; font-size: 11px; letter-spacing: 1px; }
+.opera-editorial .knowledge-card { background: linear-gradient(145deg, #35263177, #231e27); border-color: #68515f; }
+.opera-editorial .knowledge-card > span, .specimen-bottom { color: #c8a9b7; font-size: 11px; }
+.opera-editorial .knowledge-card p { color: #c4bdc3; font-size: 15px; }
+.opera-editorial .prompt-specimen .specimen-frame { background: radial-gradient(ellipse at 50% 0%, #64374944, transparent 65%), #252029; border-color: #836174; }
+.opera-editorial .specimen-frame blockquote { color: #e7d5df; }
+.lens-tabs, .data-choice-tabs, .guide-item, .opera-editorial .guide-item { border-color: #5d4b58; }
+.lens-tabs button, .data-choice-tabs button { color: #c7bac5; font-size: 14px; }
+.lens-tabs button.active, .data-choice-tabs button.active { color: #f6e7ed; background: #51323f; border-color: #ba7a91; }
+.lens-details li, .plan-card li, .mechanics-list p, .privacy-boundary p { color: #c4bdc3; font-size: 15px; }
+.data-choice, .data-path article, .plan-card, .question-examples article { background-color: #231e27; border-color: #67505f; }
+.data-choice-note, .data-path article > span, .privacy-boundary > span { color: #bfb2bd; font-size: 12px; }
+.data-path article.active, .plan-card.holder-plan { background: #30212c; border-color: #ac6b84; }
+.opera-editorial .guide-item.expanded { background: linear-gradient(135deg, #4f304244, #252029); border-color: #aa7288; }
+.guide-item > button strong { color: #e8dce4; font-size: 16px; }
+.guide-item > button > span { color: #c9a9bb; font-size: 12px; }
+.opera-editorial .guide-item p { font-size: 15px; }
+.opera-editorial .guide-index, .access-note { color: #c5b6c1; font-size: 12px; }
+.opera-invitation .access-pass { background: linear-gradient(145deg, #553646cc, #241c28 65%, #62314499); border-color: #b1899b; box-shadow: 0 20px 65px #0004, inset 0 0 0 9px #b8849b0a, inset 0 0 0 10px #c58ea42a; }
+.pass-top, .pass-bottom { color: #d2bdcc; font-size: 11px; }
+.pass-top small, .pass-bottom small { color: #c6afbf; font-size: 10px; }
+.pass-center > span, .pass-center p { color: #cfbfca; font-size: 11px; }
+.guide-questions { background: #1c1821; }
+.opera-policy section { border-color: #564451; }
+.policy-page section p, .policy-page .policy-intro { color: #c4bdc3; font-size: 16px; }
+.policy-page section h2 { color: #eadfe7; }
+.policy-page section a { color: #e0a2b5; }
+
+/* Workspace controls are separated from the canvas, with visible edges and text. */
+.opera-workspace .opera-backdrop { opacity: .38; }
+.opera-workspace .workspace-header { background: #201b23d9; border-color: #4d3f4b; }
+.workspace-header strong, .workspace-header .breadcrumb { color: #d1c4ce; font-size: 12px; }
+.opera-workspace .chamber-rail { background: #231e27e8; border-color: #554151; }
+.chamber-rail button { color: #c0aab9; }
+.chamber-rail button.active { color: #f2dbe7; background: #583443; border-color: #b87893; }
+.workspace-sidebar { background: #252029f7; border-color: #6a4b5c; }
+.sidebar-label, .sidebar-access .eyebrow { color: #c5acbc; font-size: 11px; }
+.history-empty p, .history-state, .workspace-note { color: #c2b5c0; font-size: 12px; }
+.history-empty button, .new-chat { color: #e0c7d7; font-size: 13px; border-color: #8b657b; }
+.saved button { color: #d7c9d3; font-size: 13px; }
+.saved:hover, .saved.selected { background: #4d3042; }
+.workspace-modes button { color: #d1bfcc; font-size: 14px; }
+.workspace-modes button.selected { color: #f0d8e6; background: #4c3142; }
+.trial-card { background: #352736; border-color: #826079; }
+.trial-card p { color: #c6b1c3; font-size: 13px; }
+.trial-card .eyebrow { color: #d6b3cc; font-size: 10px; }
+.sidebar-settings, .back-home { color: #cbb9c8; font-size: 13px; }
+.opera-workspace .workspace-welcome h1 { color: var(--text); }
+.opera-workspace .workspace-welcome h1 em { color: #dcb7c1; }
+.chamber-welcome-copy > p { color: #c4bdc3; font-size: 15px; line-height: 1.9; }
+.chamber-welcome-copy > .eyebrow, .suggestion-heading, .composer-caption { color: #d1a6b9; font-size: 11px; }
+.chamber-object-note { color: #c3aebc; font-size: 10px; letter-spacing: 1px; }
+.opera-workspace .suggestion-grid button { color: #dcd0d9; font-size: 14px; border-color: #67505e; }
+.opera-workspace .suggestion-grid button:hover { background: #422b3999; border-color: #c08b9f; }
+.suggestion-num { color: #bf9caf; font-size: 11px; }
+.opera-workspace .composer { background: linear-gradient(145deg, #332a37, #29232f); border-color: #947183; box-shadow: 0 10px 40px #0002; }
+.opera-workspace .composer:focus-within { border-color: #dea4ba; box-shadow: 0 0 0 2px #bd839f22; }
+.composer textarea { color: #f1ede7; font-size: 16px; line-height: 1.7; }
+.composer-tools button, .mode-chip, .send-label { font-size: 12px; color: #d7bdcd; }
+.mode-chip { background: #463044; border-color: #8b6480; }
+.send-button { background: #d32435; color: #fff; }
+.composer-disclosure, .composer-hint, .ai-footnote, .signin-prompt { color: #bfb2c0; font-size: 12px; line-height: 1.7; }
+.signin-prompt a, .composer-disclosure a { color: #deb3c7; }
+.wallet-button { color: #f1dce8; border-color: #a1758c!important; font-size: 12px!important; }
+.document-pick, .wallet-input-panel { background: #28202dd9; border-color: #876279; }
+.document-pick strong { color: #ead7e3; font-size: 14px; }
+.document-pick > span, .wallet-input-panel > span { color: #c1aec0; font-size: 12px; }
+.wallet-input-panel > label { color: #d2a6c0; font-size: 11px; }
+.wallet-input-panel input { color: #f0dce9; font-size: 16px; }
+.wallet-input-panel input::placeholder { color: #b8a6b8; }
+.wallet-input-panel button { color: #e8c9db; border-color: #a17490; font-size: 12px; }
+.answer-content { color: #e0d9df; font-size: 16px; line-height: 1.85; }
+.answer-content h4 { color: #f1e5ed; }
+.message-author { color: #c9aabe; font-size: 11px; }
+.message.user { border-color: #685064; }
+.message.user .answer-content { color: #eddae6; }
+.message.assistant { border-color: #bd859e; }
+.source-list { border-color: #665060; }
+.source-list > span { color: #d8b4ca; font-size: 12px; }
+.source-list > a { color: #e1c7d8; border-color: #846078; background: #2b2030; font-size: 13px; }
+.source-list > a > span, .copy-answer { color: #c6a8c0; font-size: 12px; }
+.modal { background: linear-gradient(135deg, #382834, #25202c 70%); border-color: #ac8198; box-shadow: 0 15px 80px #0006; }
+.modal h2 { color: #f2e3ed; }
+.modal .eyebrow { color: #d8acc7; font-size: 11px; }
+.modal-subtitle, .workspace .modal p, .workspace .settings-disclosure { color: #d0bfce; font-size: 14px; }
+.modal-actions .btn { font-size: 13px; }
+.wallet-safety { color: #e0b7cd; background: #55304477; border-color: #9e6884; }
+.wallet-options button { color: #efdce8; background: #392635; border-color: #8b607b; font-size: 14px; }
+.wallet-requirement, .workspace .settings-disclosure > span { color: #cbb5c7; font-size: 13px; }
+.modal .cx-pass { margin: 22px auto 0; border-color: #866078; }
+.modal .cx-pass-eyebrow, .modal .cx-pass-note { padding-right: 85px; }
+.modal .cx-pass-eyebrow { color: #c2a1b4; font-size: 10px; letter-spacing: 1.3px; }
+.modal .cx-pass-meta { flex-wrap: wrap; color: #b8a6b3; row-gap: 12px; }
+.modal .cx-pass-note { color: #c7b8c4; }
+.setting-row h4, .workspace .setting-row h4 { color: #ecdae6; font-size: 15px; }
+.switch { background-color: #6b5267; border-color: #96798d; }
+.switch > span { background: #e5d7e2; }
+.switch.on { background-color: #d32435; border-color: #d793ad; }
+.workspace-error, .modal-error { color: #f5c1d1; background: #502938; border-color: #b96a88; font-size: 13px; }
+
+/* A restrained light pool and dust connect the sculpture to its surrounding stage. */
+.theatre-object { filter: drop-shadow(0 16px 24px #0003); }
+.theatre-halo { background: radial-gradient(ellipse, #88533e1a, #692b4122 40%, transparent 72%); }
+.theatre-spark { background: #b99a7b; box-shadow: 0 0 10px #a47c58; opacity: .35; }
+.theatre-model { mask-image: radial-gradient(ellipse 64% 67% at 50% 50%, #000 77%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 64% 67% at 50% 50%, #000 77%, transparent 100%); }
+.theatre-model::before { content: ""; position: absolute; inset: 6% 5%; background: radial-gradient(ellipse at 48% 45%, #7447341a, #5c26341f 38%, transparent 70%); pointer-events: none; }
+.theatre-model::after { content: ""; position: absolute; bottom: 10%; left: 25%; width: 50%; height: 7%; background: radial-gradient(ellipse, #a6764f22, transparent 70%); filter: blur(8px); pointer-events: none; }
+.theatre-model canvas { position: relative; z-index: 1; transition: opacity .65s ease; }
+.model-silhouette { position: absolute; inset: 0; opacity: .5; filter: saturate(.4) brightness(.82); transition: opacity .65s ease; }
+.model-ready .model-silhouette { opacity: 0; }
+.model-failed .model-silhouette { opacity: .8; }
+
+@media (max-width: 650px) {
+  .header-identity { gap: 9px; }
+  .site-header nav.nav-open, .home-cinema > .site-header .nav-open { background: #231e27f7; }
+  .home-cinema .eyebrow, .opera-editorial .eyebrow, .eyebrow { font-size: 10px; letter-spacing: 1px; }
+  .cinema-topnote, .cinema-coordinate { font-size: 9px; letter-spacing: .5px; }
+  .cinema-edge { font-size: 8px; }
+  .object-caption { font-size: 9px; letter-spacing: 1.3px; }
+  .cinema-enter { font-size: 13px; }
+  .cinema-scroll a, .scene-progress { font-size: 9px; }
+  .second-scene p, .third-scene p { font-size: 14px; }
+  .cinema-section-top .text-link { font-size: 12px; }
+  .manifesto-sidenote { font-size: 9px; }
+  .opera-editorial p, .opera-editorial .editorial-hero-copy > p,
+  .opera-editorial .access-page-hero > div > p, .opera-editorial .guide-hero-copy > p,
+  .policy-page section p { font-size: 15px; }
+  .opera-editorial .editorial-hero-art > span, .guide-hero-art > span { font-size: 10px; letter-spacing: .7px; }
+  .guide-item > button strong { font-size: 15px; }
+  .chamber-welcome-copy > p { font-size: 14px; }
+  .opera-workspace .suggestion-grid button { font-size: 13px; }
+  .chamber-welcome-copy > .eyebrow, .suggestion-heading, .composer-caption { font-size: 10px; }
+  .chamber-object-note { font-size: 9px; }
+  .composer-disclosure, .ai-footnote { font-size: 11px; }
+  .composer-disclosure > span { max-width: 42%; }
+  .composer-disclosure > a { max-width: 55%; }
+  .wallet-button { font-size: 11px!important; }
+  .pass-top small, .pass-bottom small { font-size: 9px; }
+  .modal-subtitle, .workspace .modal p { font-size: 13px; }
+  .message-author { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theatre-model canvas, .model-silhouette { transition: none; }
+}
