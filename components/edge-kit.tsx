@@ -688,7 +688,7 @@ export function EdgeFooter() {
           <div><span>Fine print</span><a href="/privacy">Privacy & data</a><a href="/guide">How it works</a></div>
         </div>
       </div>
-      <div className="ek-footer-base"><small>© {new Date().getFullYear()} Calypto</small><small>Some questions are hidden. Ask them anyway.</small></div>
+      <div className="ek-footer-base"><small>© {new Date().getFullYear()} Calypto</small><small><a href="mailto:support@calypto.pro">support@calypto.pro</a></small><small>Some questions are hidden. Ask them anyway.</small></div>
     </footer>
   );
 }

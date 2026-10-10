@@ -5,6 +5,7 @@ import { z } from "zod";
 import { isAddress } from "viem";
 import {
   AppError,
+  CALYPTO_COMING_SOON,
   CHAIN_ID,
   HOLDER_MIN_USD,
   body,
@@ -87,6 +88,7 @@ async function handle(req: Request, session: Visitor) {
   const { id, network } = session;
   const action = path(req);
   const method = req.method;
+  const trialLimitDisabled = runtime().DISABLE_TRIAL_LIMIT === "true";
   if (method !== "GET") sameOrigin(req);
 
   if (action === "status" && method === "GET") {
@@ -97,7 +99,7 @@ async function handle(req: Request, session: Visitor) {
     // the holder tier only matters once the free start is used up
     let tier: string | null = null;
     let dailyLimit = 0;
-    if (wallet && trialUsed >= TRIAL_LIMIT) {
+    if (!trialLimitDisabled && wallet && trialUsed >= TRIAL_LIMIT) {
       await rate("external:global", 120, 60);
       await rate("external:ip:" + network, 8, 60);
       try {
@@ -111,11 +113,12 @@ async function handle(req: Request, session: Visitor) {
     const s = settings();
     return json({
       aiReady: !!runtime().VENICE_API_KEY,
-      tokenConfigured: !!runtime().CALYPTO_TOKEN_ADDRESS,
+      tokenConfigured: isAddress(runtime().CALYPTO_TOKEN_ADDRESS || ""),
       sessionReady: true,
       networkTracking: session.networkKnown,
       wallet,
-      trialRemaining: Math.max(0, TRIAL_LIMIT - trialUsed),
+      trialLimitDisabled,
+      trialRemaining: trialLimitDisabled ? null : Math.max(0, TRIAL_LIMIT - trialUsed),
       dailyRemaining: Math.max(0, dailyLimit - dailyUsed),
       tier,
       dailyLimit,
@@ -317,9 +320,12 @@ async function handle(req: Request, session: Visitor) {
     const context = await buildContext(id, data.messages);
 
     const wallet = await verifiedWallet(id);
-    let quotaKey = "trial:" + id;
-    let limit = TRIAL_LIMIT;
-    if ((await used(quotaKey)) >= TRIAL_LIMIT) {
+    // Keep temporary usage separate so restoring the trial preserves its original count.
+    let quotaKey = trialLimitDisabled ? "trial:open:" + id + ":" + today() : "trial:" + id;
+    let limit = trialLimitDisabled ? 10000 : TRIAL_LIMIT;
+    if (!trialLimitDisabled && (await used(quotaKey)) >= TRIAL_LIMIT) {
+      if (!isAddress(runtime().CALYPTO_TOKEN_ADDRESS || ""))
+        throw new AppError(CALYPTO_COMING_SOON, 403);
       if (!wallet)
         throw new AppError(
           `You’ve used your free access. Hold $${HOLDER_MIN_USD} or more of $CALYPTO and connect your wallet to keep going.`,
@@ -342,8 +348,12 @@ async function handle(req: Request, session: Visitor) {
     if (!(await reserve(quotaKey, limit))) {
       await refund(globalKey);
       throw new AppError(
-        limit === TRIAL_LIMIT
-          ? "You’ve used your free access. Hold $CALYPTO and connect your wallet to keep going."
+        trialLimitDisabled
+          ? "Today’s workspace capacity has been reached. Please return tomorrow."
+          : limit === TRIAL_LIMIT
+          ? !isAddress(runtime().CALYPTO_TOKEN_ADDRESS || "")
+            ? CALYPTO_COMING_SOON
+            : "You’ve used your free access. Hold $CALYPTO and connect your wallet to keep going."
           : "You’ve reached today’s limit for your tier. It resets at 00:00 UTC. Hold more $CALYPTO for a higher tier.",
         429,
       );

@@ -221,7 +221,7 @@ function Abilities() {
 }
 
 /* ---------- $CALYPTO: the page floods red; the C turns black ---------- */
-function Token() {
+function Token({ tokenConfigured }: { tokenConfigured: boolean }) {
   const ref = useRef<HTMLElement>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
@@ -240,9 +240,11 @@ function Token() {
     <section className={`hm-token ${on ? "on" : ""}`} ref={ref} data-shard="0.78 0.5 0.5 0.1 1 0.6 1">
       <div className="hm-token-inner">
         <div className="hm-token-copy">
-          <span className="ek-eyebrow">$CALYPTO · the inner edge</span>
+          <span className="ek-eyebrow">{tokenConfigured ? "$CALYPTO holder access" : "$CALYPTO coming soon"}</span>
           <Rise lines={["Hold", <em key="e">the edge.</em>]} className="hm-token-title" />
-          <p>Anyone can start asking. Hold $CALYPTO and Calypto opens further: the more you hold, the more you can ask, every day. Your wallet is only read, never moved.</p>
+          <p>{tokenConfigured
+            ? "Anyone can start with three free prompts. Hold $50 or more of $CALYPTO and verify your wallet to access holder tiers, giving you more daily prompts as you hold more. Your wallet is only read, never moved."
+            : "Anyone can start with three free prompts. $CALYPTO coming soon: holder tiers will open after launch, giving you more daily prompts as you hold more. Your wallet is only read, never moved."}</p>
           <TierLadder />
         </div>
         <TiltCard className="hm-pass">
@@ -263,7 +265,7 @@ function Token() {
 }
 
 /* ---------- page ---------- */
-export default function EdgeHome() {
+export default function EdgeHome({ tokenConfigured }: { tokenConfigured: boolean }) {
   const [entrance, setEntrance] = useState<"awaiting" | "revealing" | "entered">("awaiting");
   const skip = useCallback(() => { setEntrance("entered"); try { sessionStorage.setItem("calypto-entered", "1"); } catch {} }, []);
   const reveal = useCallback(() => setEntrance(c => (c === "awaiting" ? "revealing" : c)), []);
@@ -314,7 +316,7 @@ export default function EdgeHome() {
             <a className="ek-link" href="/veil">How the veil works <ArrowRight size={14} /></a>
           </div>
         </section>
-        <Token />
+        <Token tokenConfigured={tokenConfigured} />
         <section className="hm-final" data-shard="0.5 0.3 0.32 0.12 1 0.8 0">
           <div className="hm-ask"><span>ASK.</span><small>No wallet needed to start.</small></div>
           <PromptBox id="final" compact />

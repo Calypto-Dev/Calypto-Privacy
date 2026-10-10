@@ -13,6 +13,7 @@ export class AppError extends Error {
 }
 
 export const runtime = () => env as Cloudflare.Env;
+export const CALYPTO_COMING_SOON = "$CALYPTO coming soon. Holder access will be available after launch.";
 
 function numberSetting(value: string | undefined, fallback: number, min: number, max: number) {
   const n = Number(value);
@@ -129,7 +130,7 @@ export async function holdings(address: string): Promise<Holdings> {
       eligible: false,
       value: null,
       balance: null,
-      reason: "The $CALYPTO contract address has not been connected yet.",
+      reason: CALYPTO_COMING_SOON,
     };
   const s = settings();
   const rpc = client();

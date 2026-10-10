@@ -116,6 +116,8 @@ html.ek-flooded .ek-flood::after{content:"";position:absolute;inset:0;background
 .ek-giant span::after{content:attr(data-text);position:absolute;inset:0;color:var(--red);-webkit-text-stroke:0;clip-path:inset(0 100% 0 0);transition:clip-path 1s var(--ease)}
 .ek-giant:hover span::after{clip-path:inset(0 0 0 0)}
 .ek-footer-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:20px clamp(16px,4vw,48px) 28px;color:var(--muted);border-top:1px solid var(--line)}
+.ek-footer-base a{color:inherit;text-underline-offset:4px;transition:color .2s}
+.ek-footer-base a:hover{color:var(--text)}
 @media (max-width:860px){.ek-footer-grid{grid-template-columns:1fr}}
 
 /* cursor: a small shard instead of a ring */

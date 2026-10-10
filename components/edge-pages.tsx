@@ -121,13 +121,15 @@ export function VeilPage() {
 }
 
 /* ============================== $CALYPTO ============================== */
-export function AccessPage() {
+export function AccessPage({ tokenConfigured }: { tokenConfigured: boolean }) {
   return (
     <EdgeShell active="/access">
       <PageHero
-        path="/access" ghost="$CALYPTO" eyebrow="$CALYPTO · access through ownership" shard="0.76 0.45 0.46 0 1 0.6 0"
+        path="/access" ghost="$CALYPTO" eyebrow={tokenConfigured ? "$CALYPTO holder access" : "$CALYPTO coming soon"} shard="0.76 0.45 0.46 0 1 0.6 0"
         lines={["Hold", <em key="e">the edge.</em>]}
-        lede="Anyone can start asking. Hold $CALYPTO and Calypto opens further. Three tiers, from $50: the more you hold, the more you can ask."
+        lede={tokenConfigured
+          ? "Start with three free prompts. Hold $50 or more of $CALYPTO and verify your wallet to access holder tiers. Get more daily prompts as you hold more."
+          : "$CALYPTO coming soon. Start with three free prompts now. After launch, holder tiers from $50 will give you more daily prompts as you hold more."}
       >
         <div className="ek-btns"><a className="ek-btn p" href="/app?connect=1">Check your tier <ArrowRight size={16} /></a><a className="ek-btn g" href="/app">Start asking</a></div>
       </PageHero>

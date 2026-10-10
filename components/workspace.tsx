@@ -41,7 +41,8 @@ type Status = {
   tokenConfigured: boolean;
   sessionReady: boolean;
   wallet: string | null;
-  trialRemaining: number;
+  trialLimitDisabled?: boolean;
+  trialRemaining: number | null;
   dailyRemaining: number;
   tier?: string | null;
   dailyLimit?: number;
@@ -698,7 +699,13 @@ export default function Workspace({ initialMode = "chat", initialWeb = false }: 
         </div>
         <div className="ws-drawer-bottom">
           <div className="ws-access">
-            {status?.trialRemaining === 0 && status?.tier ? (
+            {status?.trialLimitDisabled ? (
+              <>
+                <span>Your access</span>
+                <strong>Free access for now</strong>
+                <p>The three-prompt limit is temporarily paused. Daily capacity and abuse protections still apply.</p>
+              </>
+            ) : status?.trialRemaining === 0 && status?.tier ? (
               <>
                 <span>Holder tier</span>
                 <strong>{status.tier}</strong>
@@ -707,18 +714,18 @@ export default function Workspace({ initialMode = "chat", initialWeb = false }: 
             ) : status?.trialRemaining === 0 ? (
               <>
                 <span>Free access used</span>
-                <strong>Hold to continue</strong>
-                <p>Tiers start at $50 of $CALYPTO. The more you hold, the more you can ask.</p>
+                <strong>{status.tokenConfigured ? "Hold to continue" : "$CALYPTO coming soon"}</strong>
+                <p>{status.tokenConfigured ? "Tiers start at $50 of $CALYPTO. The more you hold, the more you can ask." : "Your three free prompts are used. Holder access will be available after launch."}</p>
               </>
             ) : (
               <>
                 <span>Your access</span>
                 <strong>Free to start</strong>
-                <p>Hold $CALYPTO for more usage. Tiers from $50.</p>
+                <p>{status?.tokenConfigured === false ? "$CALYPTO coming soon. Try your three free prompts now; holder tiers will open after launch." : "Hold $CALYPTO for more usage. Tiers from $50."}</p>
               </>
             )}
             <button onClick={() => setModal("wallet")}>
-              {status?.tier ? "View your tier" : "Check your tier"} <ArrowUpRight size={14} />
+              {status?.tokenConfigured === false ? status.wallet ? "View wallet" : "Connect wallet" : status?.tier ? "View your tier" : "Check your tier"} <ArrowUpRight size={14} />
             </button>
           </div>
           <button className="ws-drawer-link" onClick={() => setModal("settings")}>
@@ -1070,7 +1077,9 @@ export default function Workspace({ initialMode = "chat", initialWeb = false }: 
             <div className="wm-hold">
               <span>Holder access</span>
               <strong>
-                {holdings.value === null
+                {holdings.configured === false
+                  ? "$CALYPTO coming soon"
+                  : holdings.value === null
                   ? "Balance not verified"
                   : new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(holdings.value)}
               </strong>
@@ -1078,7 +1087,7 @@ export default function Workspace({ initialMode = "chat", initialWeb = false }: 
               {holdings.value !== null && <small>Market estimate · checked {new Date(holdings.checkedAt).toLocaleTimeString()}</small>}
             </div>
           )}
-          {holdings && status?.wallet && <HolderSeal wallet={status.wallet} valueUsd={holdings?.value ?? null} eligible={!!holdings?.eligible} />}
+          {holdings?.configured && status?.wallet && <HolderSeal wallet={status.wallet} valueUsd={holdings?.value ?? null} eligible={!!holdings?.eligible} />}
           {error && (
             <p className="wm-error" role="alert">
               {error}

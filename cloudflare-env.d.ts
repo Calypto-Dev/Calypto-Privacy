@@ -12,6 +12,8 @@ declare namespace Cloudflare {
     EXPLORER_URL?: string;
     DEXSCREENER_CHAIN_ID?: string;
     DAILY_REQUEST_LIMIT?: string;
+    /** Temporarily bypass the three-prompt trial and holder gate when set to true. */
+    DISABLE_TRIAL_LIMIT?: string;
     /** Minimum USD liquidity a DEX pair needs before its price is trusted. Default 50000. */
     MIN_LIQUIDITY_USD?: string;
     /** Fail closed when the 1h price move exceeds this percentage. Default 25. */
