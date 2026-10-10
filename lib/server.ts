@@ -291,7 +291,7 @@ export async function verifyOwnership(address: string, message: string, signatur
 
 async function replyKey() {
   const r = runtime();
-  const base = r.REPLY_SIGNING_SECRET || "calypto-reply-v1:" + (r.VENICE_API_KEY || "");
+  const base = r.REPLY_SIGNING_SECRET || "calypto-reply-v1:" + (r.AI_API_KEY || "");
   return crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(base),

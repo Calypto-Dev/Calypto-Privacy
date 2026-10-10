@@ -2,7 +2,7 @@
 
 ## Request path
 
-The workspace in `components/workspace.tsx` submits requests to `app/api/[...path]/route.ts`. Server handlers validate the request origin, signed visitor session, request size and quota before using a provider. `lib/server.ts` handles public token and wallet context; `lib/chain-data.ts` adapts provider results. `lib/venice.ts` constructs AI and document requests and validates returned citations.
+The workspace in `components/workspace.tsx` submits requests to `app/api/[...path]/route.ts`. Server handlers validate the request origin, signed visitor session, request size and quota before using a provider. `lib/server.ts` handles public token and wallet context; `lib/chain-data.ts` adapts provider results. `lib/ai.ts` constructs generic chat-completions requests, validates the trusted HTTPS endpoint and returned citations, and reads provider-specific options from private runtime settings.
 
 ## Identity and access
 

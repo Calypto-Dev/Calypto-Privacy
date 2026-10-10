@@ -17,4 +17,4 @@ jobs:
       - run: npm install --global pnpm@11.25.0
       - run: pnpm install --frozen-lockfile
       - name: Check AI request adapter
-        run: node tests/venice-adapter.mjs
+        run: node tests/ai-adapter.mjs

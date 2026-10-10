@@ -2,9 +2,13 @@ declare namespace Cloudflare {
   interface Env {
     DB?: D1Database;
     BUCKET?: R2Bucket;
-    VENICE_API_KEY?: string;
-    VENICE_MODEL?: string;
-    VENICE_BASE_URL?: string;
+    AI_API_KEY?: string;
+    AI_MODEL?: string;
+    AI_BASE_URL?: string;
+    AI_ALLOWED_ORIGIN?: string;
+    AI_CHAT_OPTIONS_JSON?: string;
+    AI_RESEARCH_OPTIONS_JSON?: string;
+    AI_CITATIONS_PATH?: string;
     CALYPTO_TOKEN_ADDRESS?: string;
     RH_RPC_URL?: string;
     ALCHEMY_API_KEY?: string;
@@ -22,7 +26,7 @@ declare namespace Cloudflare {
     HOLD_LOOKBACK_SECONDS?: string;
     /** Total characters of conversation sent to the model per prompt. Default 24000. */
     MAX_INPUT_CHARS?: string;
-    /** Secret for signing assistant replies. Falls back to a key derived from VENICE_API_KEY. */
+    /** Secret for signing assistant replies. Falls back to a key derived from AI_API_KEY. */
     REPLY_SIGNING_SECRET?: string;
     /** Required secret for anonymous session signatures and keyed IP hashes. */
     SESSION_SECRET?: string;

@@ -77,7 +77,9 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-Configure the server-side values described in [.env.example](.env.example). AI requests require `VENICE_API_KEY`; session security requires a random `SESSION_SECRET` of at least 32 characters. Alchemy and Blockscout keys enable their respective data adapters. Never put secret values in browser code or Git.
+Configure the server-side values described in [.env.example](.env.example). AI requests require `AI_API_KEY`, `AI_MODEL`, `AI_BASE_URL` and a matching `AI_ALLOWED_ORIGIN`; session security requires a random `SESSION_SECRET` of at least 32 characters. Alchemy and Blockscout keys enable their respective data adapters. Never put secret values in browser code or Git.
+
+The AI adapter uses a compatible chat-completions API. Provider-specific chat and web-research options belong in private runtime JSON settings, with an optional citation response path. There is no hardcoded provider, endpoint or model. Web research requires a provider that supports it and the corresponding runtime options; changing the variable names alone does not make an arbitrary provider compatible. See [setup notes](docs/GETTING_STARTED.md).
 
 The project uses Next.js through vinext, Cloudflare Workers and D1. Apply the SQL migrations in `drizzle/` to the configured D1 database before deploying. A standalone deployment must supply its own Cloudflare bindings and runtime secrets; the hosted service's credentials and database are not included here.
 
@@ -87,7 +89,7 @@ The project uses Next.js through vinext, Cloudflare Workers and D1. Apply the SQ
 node node_modules/typescript/bin/tsc --noEmit
 node tests/security.mjs
 node tests/identity.mjs
-node tests/venice-adapter.mjs
+node tests/ai-adapter.mjs
 node tests/chain-data.mjs
 python3 tests/access-rules.py
 python3 tests/abuse-rules.py

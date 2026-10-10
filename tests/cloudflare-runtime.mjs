@@ -7,7 +7,7 @@ const route = readFileSync(new URL('../app/api/[...path]/route.ts', import.meta.
 const mode = /redirect: "([^"]+)"/.exec(route)[1];
 assert.equal(mode, 'manual', 'Credential-bearing requests must not automatically follow redirects');
 const runtime = new Miniflare({ modules:true, compatibilityDate:'2026-05-01', script:
-  `export default { async fetch() { const request = new Request('https://api.venice.ai/api/v1/chat/completions', {method:'POST',redirect:${JSON.stringify(mode)}}); return Response.json({redirect:request.redirect}); } }` });
+  `export default { async fetch() { const request = new Request('https://ai.example.com/v1/chat/completions', {method:'POST',redirect:${JSON.stringify(mode)}}); return Response.json({redirect:request.redirect}); } }` });
 try {
   const response = await runtime.dispatchFetch('https://test.example');
   assert.equal(response.status, 200);

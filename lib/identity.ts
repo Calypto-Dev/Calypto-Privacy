@@ -9,7 +9,7 @@ export function identityAnswer(question: string): string | null {
     /\b(?:what|which)\b[^.!?\n]{0,100}\b(?:model|llm|ai|assistant)\b[^.!?\n]{0,70}\b(?:are you|you are|do you use|you use|you using|you run|you based|powers you|powering you|is this|powers calypto|powering calypto)\b/i,
     /\b(?:what|which)\b[^.!?\n]{0,50}\b(?:your|underlying|base)\b[^.!?\n]{0,50}\b(?:model|llm)\b/i,
     /^(?:who are you|what are you|what(?:’s|'s| is) your name|introduce yourself)[\s.!?]*$/i,
-    /\bare you (?:an? )?(?:gemma|qwen|gpt|chatgpt|claude|llama|mistral|dolphin|venice|calypto)\b/i,
+    /\bare you (?:an? )?(?:gemma|qwen|gpt|chatgpt|claude|llama|mistral|dolphin|calypto)\b/i,
     /\b(?:reveal|tell me|disclose|show me|name)\b[^.!?\n]{0,80}\b(?:your|underlying|base|actual)\b[^.!?\n]{0,60}\b(?:model|llm)\b/i,
     /\b(?:model|ai) apa (?:yang (?:kamu|anda) (?:pakai|gunakan)|kamu|anda|ini)\b/i,
   ];
