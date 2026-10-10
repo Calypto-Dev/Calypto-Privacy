@@ -5,7 +5,7 @@
 <p align="center">AI. Privacy. Uncensored.</p>
 
 <p align="center">
-  <a href="https://calypto.ft5566942.chatgpt.site">Open Calypto</a> &nbsp; / &nbsp;
+  <a href="https://calypto.pro">Open Calypto</a> &nbsp; / &nbsp;
   <a href="docs/GETTING_STARTED.md">Get started</a> &nbsp; / &nbsp;
   <a href="docs/ARCHITECTURE.md">Architecture</a> &nbsp; / &nbsp;
   <a href="https://x.com/Calypto_Privacy">X</a> &nbsp; / &nbsp;
@@ -18,7 +18,7 @@
   <a href="https://github.com/Calypto-Dev/Calypto-Privacy/actions/workflows/chain-data.yml"><img src="https://github.com/Calypto-Dev/Calypto-Privacy/actions/workflows/chain-data.yml/badge.svg" alt="Chain adapters" /></a>
 </p>
 
-Calypto is an AI workspace for asking questions, researching the web and exploring public onchain data on Robinhood Chain. General conversation, token checks, wallet analysis and document questions share one interface, with conversation history switched off by default.
+Calypto is an AI workspace for asking questions, researching the web and exploring public onchain data on Robinhood Chain. General conversation, token checks and wallet analysis share one interface, with conversation history switched off by default.
 
 ## Screens
 
@@ -34,7 +34,6 @@ Calypto is an AI workspace for asking questions, researching the web and explori
 - **Research the web:** turn on web search for current information and follow the sources included in answers.
 - **Check a token:** inspect public contract and market information, with coverage depending on the chain indexer and market data available.
 - **Read a wallet:** examine public balances and recent activity on Robinhood Chain.
-- **Ask about documents:** attach a PDF up to 4 MB for questions about its contents.
 - **Choose what to save:** keep a session temporary, or explicitly enable saved text history and use deletion or Markdown export.
 
 ## Explore The Code
@@ -59,6 +58,14 @@ Calypto is an AI workspace for asking questions, researching the web and explori
 5. Saving the conversation requires the user to enable history.
 
 AI requests pass through the server and an external model provider. Unsaved chat content is not written to Calypto's conversation database; essential access and usage metadata is retained to operate the service. Public wallet activity remains public. See the application's privacy page for its data policy.
+
+## Access
+
+Visitors start with three free prompts. After those are used, verified holders can access daily tiers: $50 of $CALYPTO for 10 prompts, $100 for 20, and $150 for 30. Holder checks require the configured Robinhood Chain contract, a working RPC, and an indexed DEX Screener market with at least $1,000 liquidity. A contract address alone does not guarantee that a usable price is available.
+
+The homepage and access-page copy follow the contract configuration automatically. Until a valid address is configured, they show "$CALYPTO coming soon."
+
+The server-side `DISABLE_TRIAL_LIMIT` switch defaults to `false`. Setting it to `true` temporarily pauses the trial cutoff and holder requirement while keeping daily capacity and abuse protections active. Temporary usage is counted separately so restoring the trial retains its original counts. The live site currently has the three-prompt limit enabled. Runtime settings are configured separately from this repository.
 
 ## Run Locally
 
@@ -103,6 +110,8 @@ The Actions workflows run the checks independently so a failure identifies the a
 | `.github/workflows/` | Automated checks |
 
 ## Contributions And Rights
+
+For support, contact [support@calypto.pro](mailto:support@calypto.pro).
 
 Describe the problem and how you verified a proposed change in your pull request. Do not include API keys, saved conversations or private wallet credentials in issues or commits.
 

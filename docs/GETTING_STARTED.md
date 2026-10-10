@@ -10,6 +10,10 @@ pnpm dev
 
 Open http://localhost:5173. Configure `VENICE_API_KEY` and a random `SESSION_SECRET` of at least 32 characters in the ignored `.env.local` file. The provider's model setting is described in `.env.example`. Configure `ALCHEMY_API_KEY` and `BLOCKSCOUT_API_KEY` for the corresponding public-chain adapters. Set `CALYPTO_TOKEN_ADDRESS` for holder access checks.
 
+Holder access also needs a working Robinhood Chain RPC and a matching DEX Screener market with at least $1,000 liquidity. The homepage and access-page copy update from the contract configuration; an unset or invalid address keeps the "$CALYPTO coming soon" message.
+
+Keep `DISABLE_TRIAL_LIMIT=false` for the normal three-prompt trial. For temporary open-access testing, set it to `true` in the server runtime settings and redeploy. This bypasses the trial cutoff and holder requirement while preserving global capacity and IP/rate protections. Restore `false` and redeploy to enable the original trial again. Temporary usage does not consume the original trial allowance.
+
 Production requires a Cloudflare Worker and D1 database. Apply the SQL files in `drizzle/` in order to your database and provide runtime secrets through your hosting platform. The placeholder binding in `vite.config.ts` is for local development; production must use your own binding and database. This repository does not include the hosted service's credentials or data.
 
 ## Verification
